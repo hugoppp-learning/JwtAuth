@@ -8,9 +8,9 @@ public class UserRepo
     private static List<ApplicationUser> _users = new()
     {
         new ApplicationUser()
-            { Role = "Admin", Username = "vlad", Email = "vlad@gmail.com", PasswordHash = HashPassword("veryStronk", GenerateSalt()) },
+            { Role = "Admin", Username = "vlad", Email = "vlad@gmail.com", PasswordHash = HashPassword("veryStronk") },
         new ApplicationUser()
-            { Role = "User", Username = "therock", Email = "therock@gmail.com", PasswordHash = HashPassword("moreStronk:0", GenerateSalt()) }
+            { Role = "User", Username = "therock", Email = "therock@gmail.com", PasswordHash = HashPassword("moreStronk:0") }
     };
 
     public ApplicationUser? FindByUsername(string username)
