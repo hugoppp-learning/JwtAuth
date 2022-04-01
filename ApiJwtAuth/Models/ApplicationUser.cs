@@ -2,12 +2,13 @@
 
 public class ApplicationUser
 {
-    public string Username { get; init; }
+    public string Username { get; init; } = null!;
 
-    public string Password { get; init; }
+    public string PasswordHash { get; init; } = null!;
 
-    public string Email { get; init; }
+    public string Email { get; init; } = null!;
 
-    public string Role { get; set; }
+    public string Role { get; set; } = null!;
+
 
 }

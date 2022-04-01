@@ -6,6 +6,7 @@ using ApiJwtAuth.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using static BCrypt.Net.BCrypt;
 
 namespace ApiJwtAuth.Controllers;
 
@@ -57,8 +58,10 @@ public class LoginController : ControllerBase
     private ApplicationUser? Authenticate(AuthRequestDto login)
     {
         ApplicationUser? user = _users.FindByUsername(login.Username);
+        if (user is null)
+            return null;
 
-        if (user?.Username == login.Username && user.Password == login.Password)
+        if (Verify(login.Password, user.PasswordHash))
             return user;
 
         return null;

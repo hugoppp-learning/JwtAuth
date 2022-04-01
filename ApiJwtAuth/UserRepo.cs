@@ -1,4 +1,5 @@
 ﻿using ApiJwtAuth.Models;
+using static BCrypt.Net.BCrypt;
 
 namespace ApiJwtAuth;
 
@@ -6,8 +7,10 @@ public class UserRepo
 {
     private static List<ApplicationUser> _users = new()
     {
-        new ApplicationUser() { Role = "Admin", Username = "vlad", Email = "vlad@gmail.com", Password = "veryStronk" },
-        new ApplicationUser() { Role= "User", Username = "therock", Email = "therock@gmail.com", Password = "moreStronk:0" }
+        new ApplicationUser()
+            { Role = "Admin", Username = "vlad", Email = "vlad@gmail.com", PasswordHash = HashPassword("veryStronk", GenerateSalt()) },
+        new ApplicationUser()
+            { Role = "User", Username = "therock", Email = "therock@gmail.com", PasswordHash = HashPassword("moreStronk:0", GenerateSalt()) }
     };
 
     public ApplicationUser? FindByUsername(string username)
