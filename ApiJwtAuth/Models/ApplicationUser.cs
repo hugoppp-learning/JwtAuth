@@ -10,5 +10,6 @@ public class ApplicationUser
 
     public string Role { get; set; } = null!;
 
+    public bool Verified { get; set; }
 
 }
